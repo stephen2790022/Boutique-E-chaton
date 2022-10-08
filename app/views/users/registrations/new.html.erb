@@ -1,0 +1,39 @@
+<%= render 'layouts/navbar2'%>
+<%= render 'shared/ban'%>
+
+<div class="container mb-5">
+  
+  <%= simple_form_for(resource, as: resource_name, :html=> { class: 'foobarbaz' }, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+    <h2 class="p-5">S'inscrire</h2>
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "Prénom" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  input_html: { autocomplete: "Nom" }%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :avatar, as: :file %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up",:class => 'btn btn-primary' %>
+    </div>
+
+  <%= render "users/shared/links" %>
+  <% end %>
+</div>
+<%= render 'layouts/footer'%>
